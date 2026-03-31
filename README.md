@@ -286,9 +286,7 @@ Live panels visible:
 ---
 
 ## Next Steps
-
-- [ ] Replicate this stack on the Proxmox production VM
-- [ ] Point Prometheus at the real Stalwart instance
-- [ ] Set up Grafana alerting (auth failures, queue spikes)
-- [ ] Add `node_exporter` for host-level metrics (CPU, RAM, disk)
-- [ ] Secure Prometheus metrics endpoint with basic auth in Stalwart config
+- [x] Replicate this stack on the Proxmox production VM
+	Reference: [[Proxmox]]
+- [x] Point Prometheus to the real Stalwart instance
+- [x] Configure Grafana alerting (authentication failures, queue spikes)
