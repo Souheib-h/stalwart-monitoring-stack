@@ -1,0 +1,38 @@
+services:
+  stalwart:
+    image: stalwartlabs/stalwart:latest
+    container_name: stalwart
+    ports:
+      - "8080:8080"   # admin + metrics
+      - "25:25"       # SMTP
+      - "143:143"     # IMAP
+      - "587:587"     # submission
+    volumes:
+      - stalwart_data:/opt/stalwart
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: unless-stopped
+
+volumes:
+  stalwart_data:
+  prometheus_data:
+  grafana_data:

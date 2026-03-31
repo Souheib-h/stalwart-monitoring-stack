@@ -1,0 +1,5 @@
+[metrics.prometheus]
+enable = true
+# optional basic auth
+# auth.username = "prometheus"
+# auth.secret = "yourpassword"
