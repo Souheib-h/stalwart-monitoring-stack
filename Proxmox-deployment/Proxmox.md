@@ -47,7 +47,7 @@ sudo apt update && sudo apt install -y grafana
 sudo systemctl enable --now grafana-server
 ```
 
-![Grafana installed and running](mg/Grafana-bare-done.png)
+![Grafana installed and running](img/Grafana-bare-done.png)
 
 Access it at `http://192.168.100.217:3000`
 
@@ -169,7 +169,8 @@ Modern Stalwart versions no longer use this prefix, which causes every panel to 
 
 **Result:** The updated configuration in `stalwart.json` restores full dashboard functionality.  
 
-![[Stalwart-final-dashboard.png]]
+![Fixed ](img/Stalwart-final-dashboard.png)
+
 ## Next Steps
 
 - [ ] Keycloak IAM setup on the Stalwart VM
