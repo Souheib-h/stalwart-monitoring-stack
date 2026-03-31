@@ -286,7 +286,6 @@ Live panels visible:
 ---
 
 ## Next Steps
-- [x] Replicate this stack on the Proxmox production VM
-Reference: [[Proxmox]]
-- [x] Point Prometheus to the real Stalwart instance
-- [x] Configure Grafana alerting (authentication failures, queue spikes)
+- [ ] Replicate this stack on the Proxmox production VM  Reference: [Proxmox](Proxmox)
+- [ ] Point Prometheus to the real Stalwart instance
+- [ ] Configure Grafana alerting (authentication failures, queue spikes)
