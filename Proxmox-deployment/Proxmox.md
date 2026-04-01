@@ -29,7 +29,7 @@ sudo apt update && sudo apt install -y prometheus
 sudo systemctl enable --now prometheus
 ```
 
-![Prometheus installed and running|273](img/Prometheus-bare-donepng.png)
+![Prometheus installed and running](img/Prometheus-bare-donepng.png)
 
 Access it at `http://192.168.100.217:9090`
 
@@ -64,7 +64,7 @@ curl -fsSL https://get.stalw.art/install.sh | sudo bash
 sudo systemctl enable --now stalwart
 ```
 
-![Stalwart installed and running|242](img/Stalwart-bare-installed.png)
+![Stalwart installed and running](img/Stalwart-bare-installed.png)
 
 ---
 
@@ -129,9 +129,9 @@ Set URL to `http://localhost:9090` → **Save & test**
 
 **Dashboards** → **New** → **Import** → ID `23498` → **Load** → select Prometheus → **Import**
 
-![Importing the dashboard|206](img/import-dashboard.png)
+![Importing the dashboard](img/import-dashboard.png)
 
-![Dashboard import - step 2|213](img/importing-prome-dashboard2.png)
+![Dashboard import - step 2](img/importing-prome-dashboard2.png)
 
 Initial dashboard view (panels show N/A — see Known Issue below):
 
