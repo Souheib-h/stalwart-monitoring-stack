@@ -2,7 +2,7 @@
 
 > Bare-metal deployment of **Prometheus + Grafana** on a dedicated VM, scraping metrics from a **Stalwart Mail Server** VM — both hosted on Proxmox.
 
-**NB :** Pour une meilleure visualisation, Obsidian est recommandé.
+**NB :** For a better  visualization, Obsidian is  recommanded 
 
 ---
 
