@@ -198,7 +198,7 @@ http://prometheus:9090
 
 - Click **Save & test** → should return `Successfully queried the Prometheus API`
 
-![Prometheus as data source](img/prome-as-data-source.png)
+![Prometheus to Grafana](img/Prome-to-Grafana.png)
 
 ### 2. Import the Stalwart dashboard
 
@@ -212,8 +212,6 @@ http://prometheus:9090
 - Click **Load** → select **prometheus** as data source → **Import**
 
 ![Importing dashboard](img/importing-dashborad.png)
-
-![Prometheus to Grafana](img/Prome-to-Grafana.png)
 
 ### 3. Result
 
