@@ -171,13 +171,72 @@ Modern Stalwart versions no longer use this prefix, which causes every panel to 
 
 ![Fixed ](img/Stalwart-final-dashboard.png)
 
-## Next Steps
+## Node Exporter — System-level metrics
 
-- [ ] Keycloak IAM setup on the Stalwart VM
-- [ ] Grafana alerting on `auth_error` spikes
-- [ ] `node_exporter` on both VMs for system metrics
-- [ ] Basic auth on the Stalwart metrics endpoint
-- [ ] Domain and user configuration in Stalwart
+Install `node_exporter` on every VM to expose hardware metrics (CPU, RAM, disk, network) to Prometheus.
+
+### Installation (à répéter sur chaque VM)
+
+```bash
+# Télécharger et installer
+wget https://github.com/prometheus/node_exporter/releases/latest/download/node_exporter-1.8.2.linux-amd64.tar.gz
+tar xvf node_exporter-1.8.2.linux-amd64.tar.gz
+sudo cp node_exporter-1.8.2.linux-amd64/node_exporter /usr/local/bin/
+sudo chmod +x /usr/local/bin/node_exporter
+
+# Créer le service systemd
+sudo tee /etc/systemd/system/node_exporter.service <<EOF
+[Unit]
+Description=Node Exporter
+After=network.target
+
+[Service]
+User=nobody
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now node_exporter
+
+# Vérifier
+curl http://localhost:9100/metrics | head -20
+```
+
+### VMs concernées
+
+| VM | IP | Port |
+|---|---|---|
+| Stalwart | 192.168.100.201 | 9100 |
+| Prometheus/Grafana | 192.168.100.202 | 9100 |
+
+### Mise à jour prometheus.yml (bare-metal)
+
+Ajouter dans `/etc/prometheus/prometheus.yml` :
+
+```yaml
+  - job_name: 'node-stalwart'
+    static_configs:
+      - targets: ['192.168.100.201:9100']
+        labels:
+          instance: 'stalwart-vm'
+
+  - job_name: 'node-monitoring'
+    static_configs:
+      - targets: ['192.168.100.202:9100']
+        labels:
+          instance: 'monitoring-vm'
+```
+
+Puis recharger Prometheus :
+
+```bash
+sudo systemctl reload prometheus
+# ou via l'API
+curl -X POST http://localhost:9090/-/reload
+```
 
 ---
 
